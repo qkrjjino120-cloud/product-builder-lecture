@@ -25,7 +25,7 @@
   --accent-border: #4caf50;
   --divider-color: #444444;
   --input-border: #666666;
-  --btn-secondary: #e0e0e0;
+  --btn-secondary: #3e4042; /* 너무 밝은 회색에서 적절한 다크 그레이로 변경 */
   --shadow: rgba(0, 0, 0, 0.5);
   --danger-color: #ff6b6b;
   --danger-soft: #3b2020;
@@ -309,14 +309,14 @@ input:focus, textarea:focus {
   width: 100%;
   padding: 1.1rem;
   background-color: var(--btn-secondary);
-  color: #ffffff !important; /* 항상 흰색 글씨 강제 */
-  border: none;
+  color: #ffffff !important;
+  border: 1px solid var(--divider-color); /* 테두리 추가로 경계 명확화 */
   border-radius: 10px;
   cursor: pointer;
   font-size: 1.1rem;
   font-weight: 700;
   transition: all 0.2s ease;
-  box-shadow: 0 4px 0 var(--text-main); /* 테마에 따라 그림자 색상 변경 */
+  box-shadow: 0 4px 0 var(--shadow);
 }
 
 .secondary-btn:hover {
