@@ -3,24 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>오늘 저녁 뭐 먹지? | 메뉴 추천기</title>
+  <title>오늘 점심 뭐 먹지? | 가성비 점심 추천</title>
   <link href="/style.css" rel="stylesheet">
 </head>
 <body>
   <div class="container">
-    <header>
-      <h1>오늘 저녁 뭐 먹지? 🍲</h1>
-      <p>결정 장애를 위한 오늘의 추천 메뉴!</p>
-    </header>
-    <main>
-      <div id="result-container" class="result-box">
-        <span id="menu-display">버튼을 눌러 메뉴를 추천받으세요!</span>
-      </div>
-      <button id="recommend-btn" type="button" class="primary-btn">메뉴 추천받기</button>
-    </main>
+    <!-- 점심 메뉴 추천 섹션 -->
+    <section class="recommender-section">
+      <header>
+        <h1>오늘 점심 뭐 먹지? 🍱</h1>
+        <p>15,000원 이하 가성비 점심 메뉴 추천!</p>
+      </header>
+      <main>
+        <div id="result-container" class="result-box">
+          <span id="menu-display">버튼을 눌러 점심을 골라보세요!</span>
+        </div>
+        <button id="recommend-btn" type="button" class="primary-btn">점심 메뉴 추천받기</button>
+      </main>
+    </section>
+
+    <hr class="divider">
+
+    <!-- 제휴 문의 섹션 -->
+    <section class="contact-section">
+      <h2>제휴 및 문의 ✉️</h2>
+      <p>협력 제안이나 문의 사항은 아래 양식을 이용해 주세요.</p>
+      <form action="https://formspree.io/f/xkoqrylg" method="POST" id="contact-form">
+        <div class="form-group">
+          <label for="name">이름</label>
+          <input type="text" id="name" name="name" placeholder="성함을 입력하세요" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">이메일 주소</label>
+          <input type="email" id="email" name="_replyto" placeholder="example@email.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="message">문의 내용</label>
+          <textarea id="message" name="message" rows="4" placeholder="내용을 입력해 주세요" required></textarea>
+        </div>
+
+        <button type="submit" class="secondary-btn">문의 보내기</button>
+      </form>
+    </section>
 
     <footer>
-      <p>매일매일 맛있는 식사 하세요!</p>
+      <p>맛있는 점심 식사 하세요!</p>
     </footer>
   </div>
   <script defer src="/main.js"></script>

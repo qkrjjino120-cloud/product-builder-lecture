@@ -1,86 +1,132 @@
 body {
   font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
-  background-color: #fff9f0;
+  background-color: #f1f3f5;
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  color: #444;
+  padding: 20px;
+  color: #343a40;
 }
 
 .container {
   background: white;
-  padding: 3rem;
+  padding: 2.5rem;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  width: 90%;
-  max-width: 450px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 500px;
+}
+
+/* 추천 섹션 스타일 */
+header h1 {
+  font-size: 1.8rem;
+  color: #2b8a3e;
+  margin-top: 0;
   text-align: center;
 }
 
-header h1 {
-  font-size: 2rem;
-  color: #e67e22;
-  margin-bottom: 0.5rem;
-}
-
 header p {
-  color: #7f8c8d;
-  margin-bottom: 2.5rem;
+  color: #868e96;
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
 
 .result-box {
-  background: #fdf2e9;
-  border: 2px dashed #e67e22;
-  border-radius: 15px;
-  padding: 2.5rem 1rem;
-  margin-bottom: 2rem;
-  min-height: 80px;
+  background: #ebfbee;
+  border: 2px dashed #40c057;
+  border-radius: 12px;
+  padding: 2rem 1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  min-height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 #menu-display {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 700;
-  color: #d35400;
-  transition: transform 0.3s ease;
+  color: #2b8a3e;
 }
 
 .primary-btn {
   width: 100%;
-  padding: 1.2rem;
-  background-color: #e67e22;
+  padding: 1rem;
+  background-color: #40c057;
   color: white;
   border: none;
-  border-radius: 12px;
+  border-radius: 8px;
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 0 #cf711f;
+  margin-bottom: 1rem;
 }
 
 .primary-btn:hover {
-  background-color: #d35400;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 0 #cf711f;
+  background-color: #2f9e44;
 }
 
-.primary-btn:active {
-  transform: translateY(2px);
-  box-shadow: 0 0 0 #cf711f;
+/* 구분선 */
+.divider {
+  border: 0;
+  height: 1px;
+  background: #e9ecef;
+  margin: 2.5rem 0;
+}
+
+/* 문의 섹션 스타일 */
+.contact-section h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.contact-section p {
+  font-size: 0.9rem;
+  color: #868e96;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.secondary-btn {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #495057;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
 footer {
   margin-top: 2rem;
-  font-size: 0.85rem;
-  color: #bdc3c7;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #adb5bd;
 }
 
-/* 애니메이션 효과 */
 .pop {
   animation: pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
