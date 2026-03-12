@@ -135,4 +135,28 @@ resetBtn.addEventListener('click', () => {
   location.reload();
 });
 
+// 테마 관리 로직 추가
+const themeToggle = document.getElementById('theme-toggle');
+const modeIcon = themeToggle.querySelector('.mode-icon');
+
+const getCurrentTheme = () => document.documentElement.getAttribute('data-theme');
+const reloadDisqus = () => {
+  if (typeof DISQUS !== 'undefined') {
+    DISQUS.reset({ reload: true, config: function () { this.page.identifier = window.location.pathname; this.page.url = window.location.href; } });
+  }
+};
+const updateThemeUI = (theme) => { modeIcon.innerText = theme === 'dark' ? '☀️' : '🌙'; };
+const setTheme = (theme) => {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+  updateThemeUI(theme);
+  reloadDisqus();
+};
+
+updateThemeUI(getCurrentTheme());
+themeToggle.addEventListener('click', () => {
+  const newTheme = getCurrentTheme() === 'dark' ? 'light' : 'dark';
+  setTheme(newTheme);
+});
+
 webcamBtn.addEventListener('click', initWebcam);
