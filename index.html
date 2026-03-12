@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>오늘 점심 뭐 먹지? | 가성비 점심 추천</title>
   <script>
-    // 페이지가 로드되기 전에 테마를 즉시 적용 (FOUC 방지 및 Disqus 대비)
     const savedTheme = localStorage.getItem('theme') || 
                        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', savedTheme);
@@ -26,10 +25,28 @@
       </header>
       <main>
         <div id="result-container" class="result-box">
-          <span id="menu-display">버튼을 눌러 점심을 골라보세요!</span>
+          <div id="menu-wrapper">
+            <span id="menu-display">버튼을 눌러보세요!</span>
+          </div>
         </div>
-        <button id="recommend-btn" type="button" class="primary-btn">점심 메뉴 추천받기</button>
+
+        <div id="action-buttons" class="hidden">
+          <a id="map-link" href="#" target="_blank" class="link-btn">📍 주변 맛집 찾기</a>
+          <button id="share-btn" type="button" class="link-btn">🔗 결과 공유</button>
+        </div>
+
+        <div class="main-buttons">
+          <button id="recommend-btn" type="button" class="primary-btn">점심 메뉴 추천받기</button>
+          <button id="exclude-btn" type="button" class="text-btn hidden">이 메뉴는 제외하고 다시 뽑기 ❌</button>
+        </div>
       </main>
+
+      <!-- 최근 기록 섹션 -->
+      <div id="history-section" class="history-container hidden">
+        <h3>최근 추천 기록</h3>
+        <ul id="history-list"></ul>
+        <button id="clear-history" type="button">기록 삭제</button>
+      </div>
     </section>
 
     <hr class="divider">
