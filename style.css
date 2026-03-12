@@ -1,31 +1,31 @@
 :root {
-  /* Light Mode Variables */
+  /* Light Mode - 최고 대비 설정 */
   --bg-color: #f1f3f5;
   --container-bg: #ffffff;
-  --text-main: #343a40;
-  --text-muted: #868e96;
-  --accent-color: #2b8a3e;
-  --accent-soft: #ebfbee;
-  --accent-border: #40c057;
-  --divider-color: #e9ecef;
-  --input-border: #dee2e6;
-  --btn-secondary: #495057;
-  --shadow: rgba(0, 0, 0, 0.08);
+  --text-main: #111111;      /* 완전한 검정에 가까운 색 */
+  --text-muted: #333333;    /* 부연 설명도 명확하게 어두운 색 */
+  --accent-color: #087f23;  /* 짙은 초록 */
+  --accent-soft: #e8f5e9;
+  --accent-border: #2e7d32;
+  --divider-color: #dee2e6;
+  --input-border: #adb5bd;
+  --btn-secondary: #212529;
+  --shadow: rgba(0, 0, 0, 0.15);
 }
 
 [data-theme="dark"] {
-  /* Dark Mode Variables */
-  --bg-color: #1a1a1b;
-  --container-bg: #2d2d2e;
-  --text-main: #e4e6eb;
-  --text-muted: #b0b3b8;
-  --accent-color: #51cf66;
-  --accent-soft: #1e3a24;
-  --accent-border: #2b8a3e;
-  --divider-color: #3e4042;
-  --input-border: #4e4f50;
-  --btn-secondary: #4e4f50;
-  --shadow: rgba(0, 0, 0, 0.3);
+  /* Dark Mode - 최고 대비 설정 */
+  --bg-color: #121212;      /* 더 깊은 배경색 */
+  --container-bg: #1e1e1e;  /* 컨테이너 구분 명확화 */
+  --text-main: #ffffff;      /* 완전한 하얀색 */
+  --text-muted: #dddddd;    /* 부연 설명도 밝게 표시 */
+  --accent-color: #81c784;  /* 밝은 연두색으로 다크모드 가시성 확보 */
+  --accent-soft: #263238;
+  --accent-border: #4caf50;
+  --divider-color: #444444;
+  --input-border: #666666;
+  --btn-secondary: #e0e0e0;
+  --shadow: rgba(0, 0, 0, 0.5);
 }
 
 body {
@@ -38,7 +38,7 @@ body {
   min-height: 100vh;
   padding: 20px;
   color: var(--text-main);
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.2s, color 0.2s;
 }
 
 .container {
@@ -49,10 +49,10 @@ body {
   width: 100%;
   max-width: 500px;
   position: relative;
-  transition: background-color 0.3s, box-shadow 0.3s;
+  transition: background-color 0.2s, box-shadow 0.2s;
 }
 
-/* 테마 토글 버튼 스타일 */
+/* 테마 토글 버튼 */
 .theme-toggle-wrapper {
   position: absolute;
   top: 1.5rem;
@@ -61,10 +61,10 @@ body {
 
 #theme-toggle {
   background: var(--accent-soft);
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  border: 1px solid var(--accent-border);
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -74,28 +74,30 @@ body {
 }
 
 #theme-toggle:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
-/* 추천 섹션 스타일 */
+/* 추천 섹션 */
 header h1 {
   font-size: 1.8rem;
   color: var(--accent-color);
   margin-top: 0;
   text-align: center;
+  font-weight: 800;
 }
 
 header p {
   color: var(--text-muted);
   text-align: center;
   margin-bottom: 1.5rem;
+  font-weight: 500;
 }
 
 .result-box {
   background: var(--accent-soft);
   border: 2px dashed var(--accent-border);
-  border-radius: 12px;
-  padding: 2rem 1rem;
+  border-radius: 15px;
+  padding: 2.5rem 1rem;
   margin-bottom: 1.5rem;
   text-align: center;
   min-height: 60px;
@@ -105,26 +107,27 @@ header p {
 }
 
 #menu-display {
-  font-size: 1.3rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 800;
   color: var(--accent-color);
 }
 
 .primary-btn {
   width: 100%;
-  padding: 1rem;
+  padding: 1.1rem;
   background-color: var(--accent-border);
-  color: white;
+  color: #ffffff; /* 버튼 글씨는 항상 흰색 고정 (대비가 가장 좋음) */
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   margin-bottom: 1rem;
+  transition: background-color 0.2s;
 }
 
 .primary-btn:hover {
-  background-color: var(--accent-color);
+  filter: brightness(1.1);
 }
 
 /* 구분선 */
@@ -135,69 +138,80 @@ header p {
   margin: 2.5rem 0;
 }
 
-/* 문의 섹션 스타일 - 사이즈 축소 */
+/* 문의 섹션 */
 .contact-section {
-  max-width: 360px;
+  max-width: 380px;
   margin: 0 auto;
 }
 
-.comment-section {
-  margin-top: 1rem;
-}
-
 .contact-section h2 {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   margin-bottom: 0.5rem;
   text-align: center;
+  color: var(--text-main);
 }
 
 .contact-section p {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: var(--text-muted);
   text-align: center;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
 }
 
 .form-group {
-  margin-bottom: 0.8rem;
+  margin-bottom: 1rem;
 }
 
 label {
   display: block;
-  font-size: 0.8rem;
-  font-weight: 600;
-  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
 }
 
 input, textarea {
   width: 100%;
-  padding: 0.6rem;
-  border: 1px solid var(--input-border);
+  padding: 0.8rem;
+  border: 2px solid var(--input-border);
   background-color: var(--container-bg);
   color: var(--text-main);
-  border-radius: 6px;
+  border-radius: 8px;
   box-sizing: border-box;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
 }
 
 .secondary-btn {
   width: 100%;
-  padding: 0.7rem;
+  padding: 0.9rem;
   background-color: var(--btn-secondary);
-  color: white;
+  color: #ffffff;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.comment-section {
+  margin-top: 1.5rem;
 }
 
 footer {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: var(--text-muted);
+  font-weight: 500;
 }
 
+/* 애니메이션 */
 .pop {
   animation: pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
