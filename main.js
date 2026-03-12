@@ -38,7 +38,7 @@ recommendBtn.addEventListener('click', () => {
   }, 400);
 });
 
-// 테마 토글 및 Disqus 연동 로직
+// 테마 관리 로직
 const getCurrentTheme = () => document.documentElement.getAttribute('data-theme');
 
 const reloadDisqus = () => {
@@ -53,21 +53,19 @@ const reloadDisqus = () => {
   }
 };
 
-const setTheme = (theme, isInitial = false) => {
-  document.documentElement.setAttribute('data-theme', theme);
+const updateThemeUI = (theme) => {
   modeIcon.innerText = theme === 'dark' ? '☀️' : '🌙';
-  localStorage.setItem('theme', theme);
-  
-  // 초기 로드가 아닐 때(토글 클릭 시)만 Disqus 리셋 호출
-  if (!isInitial) {
-    reloadDisqus();
-  }
 };
 
-// 초기 테마 로드
-const savedTheme = localStorage.getItem('theme') || 
-                   (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-setTheme(savedTheme, true);
+const setTheme = (theme) => {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+  updateThemeUI(theme);
+  reloadDisqus();
+};
+
+// 초기 아이콘 설정 (테마는 HTML head에서 이미 적용됨)
+updateThemeUI(getCurrentTheme());
 
 themeToggle.addEventListener('click', () => {
   const newTheme = getCurrentTheme() === 'dark' ? 'light' : 'dark';

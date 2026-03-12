@@ -201,6 +201,13 @@ input:focus, textarea:focus {
 
 .comment-section {
   margin-top: 1.5rem;
+  background: var(--container-bg); /* 배경색 명시적 설정 */
+  padding: 10px;
+  border-radius: 12px;
+}
+
+#disqus_thread {
+  background: var(--container-bg); /* Disqus가 감지할 수 있도록 한 번 더 명시 */
 }
 
 footer {

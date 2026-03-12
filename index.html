@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>오늘 점심 뭐 먹지? | 가성비 점심 추천</title>
+  <script>
+    // 페이지가 로드되기 전에 테마를 즉시 적용 (FOUC 방지 및 Disqus 대비)
+    const savedTheme = localStorage.getItem('theme') || 
+                       (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  </script>
   <link href="/style.css" rel="stylesheet">
 </head>
 <body>
@@ -13,7 +19,6 @@
         <span class="mode-icon">🌙</span>
       </button>
     </div>
-    <!-- 점심 메뉴 추천 섹션 -->
     <section class="recommender-section">
       <header>
         <h1>오늘 점심 뭐 먹지? 🍱</h1>
@@ -29,7 +34,6 @@
 
     <hr class="divider">
 
-    <!-- 제휴 문의 섹션 -->
     <section class="contact-section">
       <h2>제휴 및 문의 ✉️</h2>
       <p>협력 제안이나 문의 사항은 아래 양식을 이용해 주세요.</p>
@@ -55,7 +59,6 @@
 
     <hr class="divider">
 
-    <!-- 댓글 섹션 -->
     <section class="comment-section">
       <div id="disqus_thread"></div>
       <script>
@@ -70,7 +73,6 @@
           (d.head || d.body).appendChild(s);
           })();
       </script>
-      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </section>
 
     <footer>
