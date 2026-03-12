@@ -83,6 +83,10 @@ header p {
   margin: 0 auto;
 }
 
+.comment-section {
+  margin-top: 1rem;
+}
+
 .contact-section h2 {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
