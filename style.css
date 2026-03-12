@@ -10,6 +10,9 @@
   --input-border: #adb5bd;
   --btn-secondary: #212529;
   --shadow: rgba(0, 0, 0, 0.15);
+  --danger-color: #e74c3c;
+  --danger-soft: #fff5f5;
+  --danger-border: #ffc9c9;
 }
 
 [data-theme="dark"] {
@@ -24,6 +27,9 @@
   --input-border: #666666;
   --btn-secondary: #e0e0e0;
   --shadow: rgba(0, 0, 0, 0.5);
+  --danger-color: #ff6b6b;
+  --danger-soft: #3b2020;
+  --danger-border: #632a2a;
 }
 
 body {
@@ -45,11 +51,10 @@ body {
   border-radius: 20px;
   box-shadow: 0 10px 30px var(--shadow);
   width: 100%;
-  max-width: 550px; /* 관상 사이트(550px)와 너비 통일 */
+  max-width: 550px;
   box-sizing: border-box;
 }
 
-/* 상단 내비게이션 영역 개선 (겹침 방지) */
 .header-nav {
   display: flex;
   justify-content: space-between;
@@ -69,6 +74,11 @@ body {
   border-radius: 50px;
   background: var(--container-bg);
   white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+  background: var(--accent-soft);
 }
 
 #theme-toggle {
@@ -84,7 +94,6 @@ body {
   font-size: 1.2rem;
 }
 
-/* 추천 섹션 */
 header h1 {
   font-size: 1.8rem;
   color: var(--accent-color);
@@ -170,7 +179,6 @@ header p {
   box-shadow: 0 0 0 var(--accent-color);
 }
 
-/* 추가 버튼 스타일 개선 */
 .text-btn {
   width: 100%;
   background: var(--bg-color);
@@ -182,13 +190,13 @@ header p {
   cursor: pointer;
   margin-top: 0.5rem;
   transition: all 0.2s ease;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .text-btn:hover {
-  background: #fff5f5;
-  color: #e74c3c;
-  border-color: #ffc9c9;
+  background: var(--danger-soft);
+  color: var(--danger-color);
+  border-color: var(--danger-border);
 }
 
 .history-container {
@@ -226,8 +234,8 @@ header p {
 #clear-history {
   width: 100%;
   background: var(--container-bg);
-  border: 1px solid #ffc9c9;
-  color: #e74c3c;
+  border: 1px solid var(--danger-border);
+  color: var(--danger-color);
   font-size: 0.8rem;
   padding: 0.6rem;
   border-radius: 6px;
@@ -237,9 +245,9 @@ header p {
 }
 
 #clear-history:hover {
-  background: #e74c3c;
+  background: var(--danger-color);
   color: white;
-  border-color: #e74c3c;
+  border-color: var(--danger-color);
 }
 
 .divider {
@@ -249,7 +257,6 @@ header p {
   margin: 2.5rem 0;
 }
 
-/* 문의 섹션 */
 .contact-section {
   max-width: 100%;
 }
@@ -345,7 +352,6 @@ footer {
 @keyframes roll { 0% { transform: translateY(5px); opacity: 0.5; } 100% { transform: translateY(-5px); opacity: 0.5; } }
 .hidden { display: none !important; }
 
-/* 모바일 화면 대응 */
 @media (max-width: 400px) {
   .header-nav { justify-content: center; }
   header h1 { font-size: 1.5rem; }
