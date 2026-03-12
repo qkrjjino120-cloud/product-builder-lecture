@@ -19,28 +19,38 @@
 
     <header>
       <h1>MBTI 관상 테스트 🎭</h1>
-      <p>인공지능이 당신의 관상을 분석해 MBTI를 예측해 드립니다.</p>
+      <p>얼굴 분석으로 알아보는 나의 성격!</p>
     </header>
 
     <main>
       <div id="test-container" class="test-box">
-        <div id="webcam-container"></div>
-        <div id="label-container"></div>
+        <!-- 이미지/웹캠 표시 영역 -->
+        <div id="media-container" class="media-placeholder">
+          <img id="face-preview" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="hidden" alt="얼굴 미리보기">
+          <div id="webcam-container"></div>
+        </div>
+
+        <!-- 결과 표시 영역 -->
         <div id="result-display" class="hidden">
           <h2>당신의 관상 MBTI는?</h2>
           <div id="top-prediction" class="mbti-result"></div>
           <p id="mbti-description"></p>
+          <div id="label-container"></div>
         </div>
       </div>
 
       <div class="controls">
-        <button id="start-btn" type="button" class="primary-btn">카메라 켜기 &amp; 테스트 시작</button>
+        <div class="btn-group">
+          <button id="webcam-btn" type="button" class="primary-btn">📸 카메라로 측정</button>
+          <label for="image-upload" class="upload-label">📁 사진 업로드 측정</label>
+          <input type="file" id="image-upload" accept="image/*" class="hidden">
+        </div>
+        <button id="reset-btn" type="button" class="text-btn hidden">다시 테스트하기</button>
       </div>
     </main>
 
     <hr class="divider">
 
-    <!-- 댓글 섹션 -->
     <section class="comment-section">
       <div id="disqus_thread"></div>
       <script>

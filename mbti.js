@@ -1,13 +1,18 @@
 const URL = "https://teachablemachine.withgoogle.com/models/NtcC_wQuN/";
 
 let model, webcam, labelContainer, maxPredictions;
+let isWebcamMode = false;
 
-const startBtn = document.getElementById('start-btn');
+// DOM 요소들
+const webcamBtn = document.getElementById('webcam-btn');
+const imageUpload = document.getElementById('image-upload');
 const webcamContainer = document.getElementById('webcam-container');
+const facePreview = document.getElementById('face-preview');
 const labelContainerEl = document.getElementById('label-container');
 const resultDisplay = document.getElementById('result-display');
 const topPredictionEl = document.getElementById('top-prediction');
 const mbtiDescriptionEl = document.getElementById('mbti-description');
+const resetBtn = document.getElementById('reset-btn');
 
 const mbtiDescriptions = {
   "ISTP": "조용하고 과묵하며 상황을 파악하는 능력이 뛰어난 당신, 손재주가 좋고 도구를 잘 활용하네요!",
@@ -28,42 +33,76 @@ const mbtiDescriptions = {
   "ENTP": "민첩하고 독창적이며 안목이 넓은 당신, 새로운 도전을 두려워하지 않는 혁신가입니다."
 };
 
-async function init() {
-  startBtn.innerText = "모델 로드 중...";
-  startBtn.disabled = true;
+// 모델 로드
+async function loadModel() {
+  if (!model) {
+    model = await tmImage.load(URL + "model.json", URL + "metadata.json");
+    maxPredictions = model.getTotalClasses();
+  }
+}
 
-  const modelURL = URL + "model.json";
-  const metadataURL = URL + "metadata.json";
-
-  model = await tmImage.load(modelURL, metadataURL);
-  maxPredictions = model.getTotalClasses();
-
-  const flip = true;
-  webcam = new tmImage.Webcam(250, 250, flip);
+// 웹캠 초기화 및 실행
+async function initWebcam() {
+  await loadModel();
+  isWebcamMode = true;
+  
+  webcamBtn.classList.add('hidden');
+  document.querySelector('.upload-label').classList.add('hidden');
+  
+  webcam = new tmImage.Webcam(300, 300, true);
   await webcam.setup();
   await webcam.play();
   window.requestAnimationFrame(loop);
 
   webcamContainer.appendChild(webcam.canvas);
-  labelContainer = labelContainerEl;
-  for (let i = 0; i < maxPredictions; i++) {
-    labelContainer.appendChild(document.createElement("div"));
-  }
-
-  startBtn.classList.add('hidden');
-  resultDisplay.classList.remove('hidden');
+  prepareResultUI();
 }
 
 async function loop() {
-  webcam.update();
-  await predict();
-  window.requestAnimationFrame(loop);
+  if (isWebcamMode) {
+    webcam.update();
+    await predict(webcam.canvas);
+    window.requestAnimationFrame(loop);
+  }
 }
 
-async function predict() {
-  const prediction = await model.predict(webcam.canvas);
+// 이미지 파일 분석 로직
+imageUpload.addEventListener('change', async (event) => {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  await loadModel();
+  isWebcamMode = false;
   
-  // 가장 높은 확률의 MBTI 찾기
+  const reader = new FileReader();
+  reader.onload = async (e) => {
+    facePreview.src = e.target.result;
+    facePreview.classList.remove('hidden');
+    
+    webcamBtn.classList.add('hidden');
+    document.querySelector('.upload-label').classList.add('hidden');
+    
+    // 이미지 로드 대기 후 분석
+    facePreview.onload = async () => {
+      prepareResultUI();
+      await predict(facePreview);
+    };
+  };
+  reader.readAsDataURL(file);
+});
+
+function prepareResultUI() {
+  resultDisplay.classList.remove('hidden');
+  resetBtn.classList.remove('hidden');
+  labelContainerEl.innerHTML = "";
+  for (let i = 0; i < maxPredictions; i++) {
+    labelContainerEl.appendChild(document.createElement("div"));
+  }
+}
+
+async function predict(imageSource) {
+  const prediction = await model.predict(imageSource);
+  
   let topMbti = "";
   let topProb = 0;
 
@@ -76,8 +115,7 @@ async function predict() {
       topMbti = className;
     }
     
-    // 확률 바 표시 (선택 사항)
-    labelContainer.childNodes[i].innerHTML = `
+    labelContainerEl.childNodes[i].innerHTML = `
       <div class="prediction-row">
         <span class="mbti-label">${className}</span>
         <div class="bar-container">
@@ -88,9 +126,13 @@ async function predict() {
     `;
   }
 
-  // 상위 결과 강조
   topPredictionEl.innerText = topMbti;
-  mbtiDescriptionEl.innerText = mbtiDescriptions[topMbti] || "인공지능이 당신의 관상을 분석 중입니다.";
+  mbtiDescriptionEl.innerText = mbtiDescriptions[topMbti] || "관상을 분석 중입니다.";
 }
 
-startBtn.addEventListener('click', init);
+// 다시 하기
+resetBtn.addEventListener('click', () => {
+  location.reload();
+});
+
+webcamBtn.addEventListener('click', initWebcam);
