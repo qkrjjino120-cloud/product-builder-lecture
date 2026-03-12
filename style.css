@@ -45,7 +45,7 @@ body {
   border-radius: 20px;
   box-shadow: 0 10px 30px var(--shadow);
   width: 100%;
-  max-width: 500px; /* 모바일 가독성 유지 */
+  max-width: 550px; /* 관상 사이트(550px)와 너비 통일 */
   box-sizing: border-box;
 }
 
