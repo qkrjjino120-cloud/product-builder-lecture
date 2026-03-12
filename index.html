@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-adsense-account" content="ca-pub-4768436826776624">
-  <title>오늘 점심 뭐 먹지? | 가성비 점심 추천</title>
+  <title>오늘 점심 뭐 먹지? | 가성비 점심 추천 도구</title>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4768436826776624"
      crossorigin="anonymous"></script>
   <script>
-    const savedTheme = localStorage.getItem('theme') || 
+    const savedTheme = localStorage.getItem('theme') ||
                        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', savedTheme);
   </script>
@@ -33,28 +33,27 @@
             <span id="menu-display">버튼을 눌러보세요!</span>
           </div>
         </div>
-
         <div id="action-buttons" class="hidden">
           <a id="map-link" href="#" target="_blank" class="link-btn">📍 주변 맛집 찾기</a>
           <button id="share-btn" type="button" class="link-btn">🔗 결과 공유</button>
         </div>
-
         <div class="main-buttons">
           <button id="recommend-btn" type="button" class="primary-btn">점심 메뉴 추천받기</button>
           <button id="exclude-btn" type="button" class="text-btn hidden">이 메뉴는 제외하고 다시 뽑기 ❌</button>
         </div>
+        <article class="seo-text">
+          <h3>맛있는 점심 메뉴 결정 가이드</h3>
+          <p>매일 돌아오는 점심 시간, 무엇을 먹을지 고민되시나요? 직장인과 학생들의 메뉴 결정 스트레스를 줄여드리기 위해 본 서비스를 제작했습니다.</p>
+          <p>한식의 김치찌개부터 일식의 초밥까지, <strong>15,000원 이하</strong>로 즐길 수 있는 다양한 메뉴들을 엄선했습니다. '주변 맛집 찾기' 기능을 통해 결정된 메뉴를 바로 드실 수 있는 근처 식당까지 안내해 드립니다.</p>
+        </article>
       </main>
-
-      <!-- 최근 기록 섹션 -->
       <div id="history-section" class="history-container hidden">
         <h3>최근 추천 기록</h3>
         <ul id="history-list"></ul>
         <button id="clear-history" type="button">기록 삭제</button>
       </div>
     </section>
-
     <hr class="divider">
-
     <section class="contact-section">
       <h2>제휴 및 문의 ✉️</h2>
       <p>협력 제안이나 문의 사항은 아래 양식을 이용해 주세요.</p>
@@ -63,23 +62,18 @@
           <label for="name">이름</label>
           <input type="text" id="name" name="name" placeholder="성함을 입력하세요" required>
         </div>
-
         <div class="form-group">
           <label for="email">이메일 주소</label>
           <input type="email" id="email" name="_replyto" placeholder="example@email.com" required>
         </div>
-
         <div class="form-group">
           <label for="message">문의 내용</label>
           <textarea id="message" name="message" rows="4" placeholder="내용을 입력해 주세요" required></textarea>
         </div>
-
         <button type="submit" class="secondary-btn">문의 보내기</button>
       </form>
     </section>
-
     <hr class="divider">
-
     <section class="comment-section">
       <div id="disqus_thread"></div>
       <script>
@@ -95,9 +89,13 @@
           })();
       </script>
     </section>
-
     <footer>
+      <div class="footer-nav">
+        <a href="/about.html">사이트 소개</a> |
+        <a href="/privacy.html">개인정보처리방침</a>
+      </div>
       <p>맛있는 점심 식사 하세요!</p>
+      <p class="copyright">&copy; 2026 점심추천 &amp; MBTI 테스트.</p>
     </footer>
   </div>
   <script defer src="/main.js"></script>

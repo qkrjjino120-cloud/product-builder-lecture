@@ -225,6 +225,35 @@ header p {
 
 #disqus_thread { background: var(--container-bg); }
 footer { font-size: 0.8rem; color: var(--text-muted); margin-top: 2rem; }
+.seo-text {
+  text-align: left;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.seo-text h3 {
+  color: var(--accent-color);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-nav {
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+}
+
+.footer-nav a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.copyright {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
 .hidden { display: none !important; }
 
 @media (max-width: 450px) {

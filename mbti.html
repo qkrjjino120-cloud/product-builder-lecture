@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-adsense-account" content="ca-pub-4768436826776624">
-  <title>MBTI 관상 테스트 | 얼굴로 보는 나의 성격</title>
+  <title>MBTI 관상 테스트 | AI 얼굴 성격 분석 도구</title>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4768436826776624"
      crossorigin="anonymous"></script>
   <script>
-    const savedTheme = localStorage.getItem('theme') || 
+    const savedTheme = localStorage.getItem('theme') ||
                        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', savedTheme);
   </script>
@@ -22,21 +22,16 @@
         <span class="mode-icon">🌙</span>
       </button>
     </div>
-
     <header>
       <h1>MBTI 관상 테스트 🎭</h1>
       <p>얼굴 분석으로 알아보는 나의 성격!</p>
     </header>
-
     <main>
       <div id="test-container" class="test-box">
-        <!-- 이미지/웹캠 표시 영역 -->
         <div id="media-container" class="media-placeholder">
           <img id="face-preview" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="hidden" alt="얼굴 미리보기">
           <div id="webcam-container"></div>
         </div>
-
-        <!-- 결과 표시 영역 -->
         <div id="result-display" class="hidden">
           <h2>당신의 관상 MBTI는?</h2>
           <div id="top-prediction" class="mbti-result"></div>
@@ -44,7 +39,6 @@
           <div id="label-container"></div>
         </div>
       </div>
-
       <div class="controls">
         <div class="btn-group">
           <button id="webcam-btn" type="button" class="primary-btn">📸 카메라로 측정</button>
@@ -53,10 +47,13 @@
         </div>
         <button id="reset-btn" type="button" class="text-btn hidden">다시 테스트하기</button>
       </div>
+      <article class="seo-text">
+        <h3>AI 관상 MBTI 테스트란?</h3>
+        <p>본 서비스는 수만 장의 얼굴 데이터를 학습한 <strong>Google Teachable Machine</strong> 인공지능 모델을 활용합니다. 사용자의 눈, 코, 입 등 얼굴 특징을 분석하여 16가지 MBTI 성격 유형 중 가장 가까운 관상을 찾아드립니다.</p>
+        <p>사진은 서버로 전송되지 않으며 브라우저 내에서 안전하게 실시간으로 분석됩니다. 친구들과 결과를 공유하며 관상과 실제 성격이 얼마나 일치하는지 확인해 보세요!</p>
+      </article>
     </main>
-
     <hr class="divider">
-
     <section class="comment-section">
       <div id="disqus_thread"></div>
       <script>
@@ -72,12 +69,15 @@
           })();
       </script>
     </section>
-
     <footer>
+      <div class="footer-nav">
+        <a href="/about.html">사이트 소개</a> |
+        <a href="/privacy.html">개인정보처리방침</a>
+      </div>
       <p>본 테스트는 재미로만 즐겨주세요!</p>
+      <p class="copyright">&copy; 2026 점심추천 &amp; MBTI 테스트.</p>
     </footer>
   </div>
-
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
   <script src="/mbti.js"></script>
