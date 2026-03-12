@@ -49,11 +49,29 @@ body {
   position: relative;
   transition: background-color 0.2s, box-shadow 0.2s;
 }
-
+/* 테마 토글 버튼 */
 .theme-toggle-wrapper {
   position: absolute;
   top: 1.5rem;
   right: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-btn {
+  font-size: 0.8rem;
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 700;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--accent-border);
+  border-radius: 50px;
+  transition: all 0.2s;
+}
+
+.nav-btn:hover {
+  background: var(--accent-soft);
 }
 
 #theme-toggle {
