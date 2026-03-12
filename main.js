@@ -21,7 +21,10 @@ const lunchMenus = [
 
 const menuDisplay = document.getElementById('menu-display');
 const recommendBtn = document.getElementById('recommend-btn');
+const themeToggle = document.getElementById('theme-toggle');
+const modeIcon = themeToggle.querySelector('.mode-icon');
 
+// 메뉴 추천 로직
 recommendBtn.addEventListener('click', () => {
   menuDisplay.classList.remove('pop');
   menuDisplay.innerText = "메뉴 선정 중...";
@@ -33,4 +36,23 @@ recommendBtn.addEventListener('click', () => {
     menuDisplay.innerText = selectedMenu;
     menuDisplay.classList.add('pop');
   }, 400);
+});
+
+// 테마 토글 로직
+const getCurrentTheme = () => document.documentElement.getAttribute('data-theme');
+
+const setTheme = (theme) => {
+  document.documentElement.setAttribute('data-theme', theme);
+  modeIcon.innerText = theme === 'dark' ? '☀️' : '🌙';
+  localStorage.setItem('theme', theme);
+};
+
+// 초기 테마 로드
+const savedTheme = localStorage.getItem('theme') || 
+                   (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+setTheme(savedTheme);
+
+themeToggle.addEventListener('click', () => {
+  const newTheme = getCurrentTheme() === 'dark' ? 'light' : 'dark';
+  setTheme(newTheme);
 });

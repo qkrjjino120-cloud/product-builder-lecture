@@ -1,41 +1,99 @@
+:root {
+  /* Light Mode Variables */
+  --bg-color: #f1f3f5;
+  --container-bg: #ffffff;
+  --text-main: #343a40;
+  --text-muted: #868e96;
+  --accent-color: #2b8a3e;
+  --accent-soft: #ebfbee;
+  --accent-border: #40c057;
+  --divider-color: #e9ecef;
+  --input-border: #dee2e6;
+  --btn-secondary: #495057;
+  --shadow: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] {
+  /* Dark Mode Variables */
+  --bg-color: #1a1a1b;
+  --container-bg: #2d2d2e;
+  --text-main: #e4e6eb;
+  --text-muted: #b0b3b8;
+  --accent-color: #51cf66;
+  --accent-soft: #1e3a24;
+  --accent-border: #2b8a3e;
+  --divider-color: #3e4042;
+  --input-border: #4e4f50;
+  --btn-secondary: #4e4f50;
+  --shadow: rgba(0, 0, 0, 0.3);
+}
+
 body {
   font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
-  background-color: #f1f3f5;
+  background-color: var(--bg-color);
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   padding: 20px;
-  color: #343a40;
+  color: var(--text-main);
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
-  background: white;
+  background: var(--container-bg);
   padding: 2.5rem;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px var(--shadow);
   width: 100%;
   max-width: 500px;
+  position: relative;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+/* 테마 토글 버튼 스타일 */
+.theme-toggle-wrapper {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+}
+
+#theme-toggle {
+  background: var(--accent-soft);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all 0.2s ease;
+}
+
+#theme-toggle:hover {
+  transform: scale(1.1);
 }
 
 /* 추천 섹션 스타일 */
 header h1 {
   font-size: 1.8rem;
-  color: #2b8a3e;
+  color: var(--accent-color);
   margin-top: 0;
   text-align: center;
 }
 
 header p {
-  color: #868e96;
+  color: var(--text-muted);
   text-align: center;
   margin-bottom: 1.5rem;
 }
 
 .result-box {
-  background: #ebfbee;
-  border: 2px dashed #40c057;
+  background: var(--accent-soft);
+  border: 2px dashed var(--accent-border);
   border-radius: 12px;
   padding: 2rem 1rem;
   margin-bottom: 1.5rem;
@@ -49,13 +107,13 @@ header p {
 #menu-display {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #2b8a3e;
+  color: var(--accent-color);
 }
 
 .primary-btn {
   width: 100%;
   padding: 1rem;
-  background-color: #40c057;
+  background-color: var(--accent-border);
   color: white;
   border: none;
   border-radius: 8px;
@@ -66,20 +124,20 @@ header p {
 }
 
 .primary-btn:hover {
-  background-color: #2f9e44;
+  background-color: var(--accent-color);
 }
 
 /* 구분선 */
 .divider {
   border: 0;
   height: 1px;
-  background: #e9ecef;
+  background: var(--divider-color);
   margin: 2.5rem 0;
 }
 
 /* 문의 섹션 스타일 - 사이즈 축소 */
 .contact-section {
-  max-width: 360px; /* 섹션 자체 가로폭 제한 */
+  max-width: 360px;
   margin: 0 auto;
 }
 
@@ -95,7 +153,7 @@ header p {
 
 .contact-section p {
   font-size: 0.85rem;
-  color: #868e96;
+  color: var(--text-muted);
   text-align: center;
   margin-bottom: 1.2rem;
 }
@@ -113,8 +171,10 @@ label {
 
 input, textarea {
   width: 100%;
-  padding: 0.6rem; /* 패딩 축소 */
-  border: 1px solid #dee2e6;
+  padding: 0.6rem;
+  border: 1px solid var(--input-border);
+  background-color: var(--container-bg);
+  color: var(--text-main);
   border-radius: 6px;
   box-sizing: border-box;
   font-size: 0.9rem;
@@ -122,8 +182,8 @@ input, textarea {
 
 .secondary-btn {
   width: 100%;
-  padding: 0.7rem; /* 버튼 높이 축소 */
-  background-color: #495057;
+  padding: 0.7rem;
+  background-color: var(--btn-secondary);
   color: white;
   border: none;
   border-radius: 6px;
@@ -135,7 +195,7 @@ footer {
   margin-top: 2rem;
   text-align: center;
   font-size: 0.8rem;
-  color: #adb5bd;
+  color: var(--text-muted);
 }
 
 .pop {
