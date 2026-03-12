@@ -38,19 +38,36 @@ recommendBtn.addEventListener('click', () => {
   }, 400);
 });
 
-// 테마 토글 로직
+// 테마 토글 및 Disqus 연동 로직
 const getCurrentTheme = () => document.documentElement.getAttribute('data-theme');
 
-const setTheme = (theme) => {
+const reloadDisqus = () => {
+  if (typeof DISQUS !== 'undefined') {
+    DISQUS.reset({
+      reload: true,
+      config: function () {
+        this.page.identifier = window.location.pathname;
+        this.page.url = window.location.href;
+      }
+    });
+  }
+};
+
+const setTheme = (theme, isInitial = false) => {
   document.documentElement.setAttribute('data-theme', theme);
   modeIcon.innerText = theme === 'dark' ? '☀️' : '🌙';
   localStorage.setItem('theme', theme);
+  
+  // 초기 로드가 아닐 때(토글 클릭 시)만 Disqus 리셋 호출
+  if (!isInitial) {
+    reloadDisqus();
+  }
 };
 
 // 초기 테마 로드
 const savedTheme = localStorage.getItem('theme') || 
                    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-setTheme(savedTheme);
+setTheme(savedTheme, true);
 
 themeToggle.addEventListener('click', () => {
   const newTheme = getCurrentTheme() === 'dark' ? 'light' : 'dark';
