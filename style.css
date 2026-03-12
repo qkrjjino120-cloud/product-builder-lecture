@@ -77,47 +77,54 @@ header p {
   margin: 2.5rem 0;
 }
 
-/* 문의 섹션 스타일 */
+/* 문의 섹션 스타일 - 사이즈 축소 */
+.contact-section {
+  max-width: 360px; /* 섹션 자체 가로폭 제한 */
+  margin: 0 auto;
+}
+
 .contact-section h2 {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   margin-bottom: 0.5rem;
   text-align: center;
 }
 
 .contact-section p {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #868e96;
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
 }
 
 .form-group {
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
 }
 
 label {
   display: block;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.3rem;
 }
 
 input, textarea {
   width: 100%;
-  padding: 0.7rem;
+  padding: 0.6rem; /* 패딩 축소 */
   border: 1px solid #dee2e6;
   border-radius: 6px;
   box-sizing: border-box;
+  font-size: 0.9rem;
 }
 
 .secondary-btn {
   width: 100%;
-  padding: 0.8rem;
+  padding: 0.7rem; /* 버튼 높이 축소 */
   background-color: #495057;
   color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  font-size: 0.9rem;
 }
 
 footer {
